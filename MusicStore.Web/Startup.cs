@@ -49,9 +49,10 @@ namespace MusicStore.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+                    "index",
+                    "{controller=Home}/{action=Index}/");
+
+               });
         }
     }
 }
