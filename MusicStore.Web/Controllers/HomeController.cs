@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Diagnostics;
+using System.Linq;
 
 namespace MusicStore.Web.Controllers
 {
@@ -7,9 +9,9 @@ namespace MusicStore.Web.Controllers
     {
         public IActionResult Index()
         {
+            var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
 
-
-            return View();
+            return Content(message);
         }
 
     }
