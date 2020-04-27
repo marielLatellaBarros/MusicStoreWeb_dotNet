@@ -19,18 +19,22 @@ namespace MusicStore.Tests
         [Test]
         public void Index_ReturnsContentContainingControllerNameAndActionName()
         {
+            //arrange
             var newRouteData = new RouteData();
-            var routeData = new RouteData();
-            routeData.Values["controller"] = Guid.NewGuid().ToString();
-            routeData.Values["action"] = Guid.NewGuid().ToString();
+            newRouteData.Values["controller"] = Guid.NewGuid().ToString();
+            newRouteData.Values["action"] = Guid.NewGuid().ToString();
 
             _homeController.ControllerContext.RouteData = newRouteData;
 
+            //act
+            var contentResult = _homeController.Index();
 
-            var actionResult = _homeController.Index();
+            //assert
+           Assert.That(_homeController.Index(), Is.InstanceOf<IActionResult>());
+           Assert.That(contentResult, Is.Not.Null);
 
-           Assert.That(actionResult, Is.InstanceOf<IActionResult>());
-           Assert.That(_homeController.RouteData.Values["homeIndex"], Is.EqualTo("Home:Index"));
+           //TODO: No "Content" property for contentResult
+           //Assert.That(contentResult.Content );
         }
 
         [Test]
