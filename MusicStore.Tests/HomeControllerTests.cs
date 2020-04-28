@@ -55,7 +55,13 @@ namespace MusicStore.Tests
         public void Details_ReturnsContentContainingControllerNameActionNameAndParamName()
         {
             //act
-            var result = (ContentResult)_sut.Details(1);
+            const int id = 1;
+            var result = (ContentResult)_sut.Details(id);
+
+            //assert
+            Assert.That(_sut.Index(), Is.InstanceOf<IActionResult>());
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Content, Is.EqualTo(_controllerName + _actionName + id));
         }
 
     }

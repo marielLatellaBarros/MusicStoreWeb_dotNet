@@ -22,7 +22,10 @@ namespace MusicStore.Web.Controllers
 
         public IActionResult Details(int id)
         {
-            throw new NotImplementedException();
+            var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
+            message += id;
+
+            return Content(message);
         }
     }
 }
