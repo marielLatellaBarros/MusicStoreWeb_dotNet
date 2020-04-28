@@ -1,8 +1,8 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using MusicStore.Web.Controllers;
 using NUnit.Framework;
+using System;
 
 namespace MusicStore.Tests
 {
@@ -68,7 +68,7 @@ namespace MusicStore.Tests
         public void Search_Rock_PermanentRedirect()
         {
             //act
-            string genre = "rock";
+            const string genre = "rock";
             var result = (RedirectResult)_sut.SearchMusic(genre);
 
             //assert
@@ -82,7 +82,7 @@ namespace MusicStore.Tests
         public void Search_Jazz_RedirectToIndexAction()
         {
             //act
-            string genre = "jazz";
+            const string genre = "jazz";
             var result = (RedirectToActionResult)_sut.SearchMusic(genre);
 
             //assert
@@ -91,6 +91,18 @@ namespace MusicStore.Tests
             Assert.That(result.ActionName, Is.EqualTo("Index"));
         }
 
+        [Test]
+        public void Search_Metal_RedirectToDetailsActionWithRandomId()
+        {
+            //act
+            const string genre = "metal";
+            var result = (RedirectToActionResult)_sut.SearchMusic(genre);
 
+            //assert
+            Assert.That(_sut.SearchMusic(genre), Is.InstanceOf<IActionResult>());
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ActionName, Is.EqualTo("Details"));
+            Assert.That(result.RouteValues.Values.Count, Is.EqualTo(1));
+        }
     }
 }

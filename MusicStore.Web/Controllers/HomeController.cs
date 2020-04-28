@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
 namespace MusicStore.Web.Controllers
@@ -30,13 +31,19 @@ namespace MusicStore.Web.Controllers
 
         public IActionResult SearchMusic(string genre)
         {
-            if (genre.ToUpper().Equals("ROCK")) 
+            if (genre.ToUpper().Equals("ROCK"))
             {
                 return RedirectPermanent(RockUrl);
-            } 
+            }
             else if (genre.ToUpper().Equals("JAZZ"))
             {
                 return RedirectToAction("Index");
+            }
+            else if (genre.ToUpper().Equals("METAL"))
+            {
+                var randomId = new Random();
+
+                return RedirectToAction("Details", new { id = randomId });
             }
 
             return NotFound();
