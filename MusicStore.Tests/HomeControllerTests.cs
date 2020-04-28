@@ -6,21 +6,20 @@ using NUnit.Framework;
 
 namespace MusicStore.Tests
 {
-    public class Tests
+    public class HomeControllerTests
     {
-        private HomeController sut;
-        public string _controllerName { get; private set; }
+        private HomeController _sut;
+        private string _controllerName;
         private string _actionName;
-        private RouteData _newRouteData;
 
-       [SetUp]
+        [SetUp]
         public void Setup()
         {
             //arrange
-            sut = new HomeController();
+            _sut = new HomeController();
 
             var newRouteData = new RouteData();
-            sut.ControllerContext.RouteData = newRouteData;
+            _sut.ControllerContext.RouteData = newRouteData;
 
             _controllerName = Guid.NewGuid().ToString();
             _actionName = Guid.NewGuid().ToString();
@@ -32,10 +31,10 @@ namespace MusicStore.Tests
         public void Index_ReturnsContentContainingControllerNameAndActionName()
         {
             //act
-            var result = (ContentResult)sut.Index();
+            var result = (ContentResult)_sut.Index();
 
             //assert
-           Assert.That(sut.Index(), Is.InstanceOf<IActionResult>());
+           Assert.That(_sut.Index(), Is.InstanceOf<IActionResult>());
            Assert.That(result, Is.Not.Null);
            Assert.That(result.Content, Is.EqualTo(_controllerName+ _actionName));
         }

@@ -5,7 +5,7 @@ namespace MusicStore.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ContentResult Index()
+        public IActionResult Index()
         {
             var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
 
