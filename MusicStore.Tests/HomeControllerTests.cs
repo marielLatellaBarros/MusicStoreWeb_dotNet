@@ -33,9 +33,6 @@ namespace MusicStore.Tests
             _actionName = Guid.NewGuid().ToString();
             newRouteData.Values["controller"] = _controllerName;
             newRouteData.Values["action"] = _actionName;
-
-
-           
         }
 
         [Test]
@@ -127,5 +124,20 @@ namespace MusicStore.Tests
             Assert.That(_sut.SearchMusic(genre), Is.InstanceOf<IActionResult>());
             Assert.That(result.FileContents, Is.Not.Null);
         }
+
+        [Test]
+        public void Search_UnknownGenre_ReturnsContentContainingControllerNameActionNameAndGenreParameter
+            ()
+        {
+            //act
+            const string genre = "other";
+            var result = (ContentResult)_sut.SearchMusic(genre);
+
+            //assert
+            Assert.That(_sut.SearchMusic(genre), Is.InstanceOf<IActionResult>());
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Content, Is.EqualTo(_controllerName + _actionName + genre));
+        }
+
     }
 }

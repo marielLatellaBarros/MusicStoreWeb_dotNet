@@ -68,7 +68,10 @@ namespace MusicStore.Web.Controllers
                 return fileContents;
             }
 
-            return NotFound();
+            var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
+            message += genre;
+
+            return Content(message);
         }
     }
 }
