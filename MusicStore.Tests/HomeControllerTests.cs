@@ -32,7 +32,7 @@ namespace MusicStore.Tests
         public void Index_ReturnsContentContainingControllerNameAndActionName()
         {
             //act
-            var result = sut.Index();
+            var result = (ContentResult)sut.Index();
 
             //assert
            Assert.That(sut.Index(), Is.InstanceOf<IActionResult>());
