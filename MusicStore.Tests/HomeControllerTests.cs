@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Moq;
 using MusicStore.Web.Controllers;
+using MusicStore.Web.Services;
 using NUnit.Framework;
 using System;
 
@@ -11,12 +13,18 @@ namespace MusicStore.Tests
         private HomeController _sut;
         private string _controllerName;
         private string _actionName;
+        private Mock<IFileProvider> _fileProviderMock;
+        private byte[] _fileBytes;
 
         [SetUp]
         public void Setup()
         {
             //arrange
-            _sut = new HomeController();
+            _fileProviderMock = new Mock<IFileProvider>();
+            _fileBytes = Guid.NewGuid().ToByteArray();
+            _fileProviderMock.Setup(m => m.GetBytes(It.IsAny<string>())).Returns(_fileBytes);
+
+            _sut = new HomeController(_fileProviderMock.Object);
 
             var newRouteData = new RouteData();
             _sut.ControllerContext.RouteData = newRouteData;
@@ -25,6 +33,9 @@ namespace MusicStore.Tests
             _actionName = Guid.NewGuid().ToString();
             newRouteData.Values["controller"] = _controllerName;
             newRouteData.Values["action"] = _actionName;
+
+
+           
         }
 
         [Test]
@@ -103,6 +114,18 @@ namespace MusicStore.Tests
             Assert.That(result, Is.Not.Null);
             Assert.That(result.ActionName, Is.EqualTo("Details"));
             Assert.That(result.RouteValues.Values.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Search_Classic_ReturnsContentOfSiteCssFile()
+        {
+            //act
+            const string genre = "classic";
+            var result = (FileContentResult)_sut.SearchMusic(genre);
+
+            //assert
+            Assert.That(_sut.SearchMusic(genre), Is.InstanceOf<IActionResult>());
+            Assert.That(result.FileContents, Is.Not.Null);
         }
     }
 }
