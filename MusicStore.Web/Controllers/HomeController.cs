@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 
 namespace MusicStore.Web.Controllers
@@ -19,5 +20,9 @@ namespace MusicStore.Web.Controllers
             return Content(message);
         }
 
+        public IActionResult Details(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
