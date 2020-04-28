@@ -12,5 +12,12 @@ namespace MusicStore.Web.Controllers
             return Content(message);
         }
 
+        public IActionResult About()
+        {
+            var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
+
+            return Content(message);
+        }
+
     }
 }

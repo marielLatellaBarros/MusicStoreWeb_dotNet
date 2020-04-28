@@ -42,7 +42,13 @@ namespace MusicStore.Tests
         [Test]
         public void About_ReturnsContentContainingControllerNameAndActionName()
         {
-            Assert.Pass();
+            //act
+            var result = (ContentResult)_sut.About();
+
+            //assert
+            Assert.That(_sut.Index(), Is.InstanceOf<IActionResult>());
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Content, Is.EqualTo(_controllerName + _actionName));
         }
 
     }
