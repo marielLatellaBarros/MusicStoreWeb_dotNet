@@ -33,6 +33,10 @@ namespace MusicStore.Web.Controllers
             if (genre.ToUpper().Equals("ROCK")) 
             {
                 return RedirectPermanent(RockUrl);
+            } 
+            else if (genre.ToUpper().Equals("JAZZ"))
+            {
+                return RedirectToAction("Index");
             }
 
             return NotFound();

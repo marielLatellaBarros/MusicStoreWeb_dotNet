@@ -78,5 +78,19 @@ namespace MusicStore.Tests
             Assert.That(result.Url, Is.EqualTo(HomeController.RockUrl));
         }
 
+        [Test]
+        public void Search_Jazz_RedirectToIndexAction()
+        {
+            //act
+            string genre = "jazz";
+            var result = (RedirectToActionResult)_sut.SearchMusic(genre);
+
+            //assert
+            Assert.That(_sut.SearchMusic(genre), Is.InstanceOf<IActionResult>());
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ActionName, Is.EqualTo("Index"));
+        }
+
+
     }
 }
