@@ -8,33 +8,36 @@ namespace MusicStore.Tests
 {
     public class Tests
     {
-        private HomeController _homeController;
+        private HomeController sut;
+        public string _controllerName { get; private set; }
+        private string _actionName;
+        private RouteData _newRouteData;
 
        [SetUp]
         public void Setup()
         {
-            _homeController = new HomeController();
+            //arrange
+            sut = new HomeController();
+
+            var newRouteData = new RouteData();
+            sut.ControllerContext.RouteData = newRouteData;
+
+            _controllerName = Guid.NewGuid().ToString();
+            _actionName = Guid.NewGuid().ToString();
+            newRouteData.Values["controller"] = _controllerName;
+            newRouteData.Values["action"] = _actionName;
         }
 
         [Test]
         public void Index_ReturnsContentContainingControllerNameAndActionName()
         {
-            //arrange
-            var newRouteData = new RouteData();
-            newRouteData.Values["controller"] = Guid.NewGuid().ToString();
-            newRouteData.Values["action"] = Guid.NewGuid().ToString();
-
-            _homeController.ControllerContext.RouteData = newRouteData;
-
             //act
-            var contentResult = _homeController.Index();
+            var result = sut.Index();
 
             //assert
-           Assert.That(_homeController.Index(), Is.InstanceOf<IActionResult>());
-           Assert.That(contentResult, Is.Not.Null);
-
-           //TODO: No "Content" property for contentResult
-           //Assert.That(contentResult.Content );
+           Assert.That(sut.Index(), Is.InstanceOf<IActionResult>());
+           Assert.That(result, Is.Not.Null);
+           Assert.That(result.Content, Is.EqualTo(_controllerName+ _actionName));
         }
 
         [Test]
