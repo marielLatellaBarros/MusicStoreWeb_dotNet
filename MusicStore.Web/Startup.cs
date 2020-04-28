@@ -52,7 +52,11 @@ namespace MusicStore.Web
                     "index",
                     "{controller=Home}/{action=Index}/");
 
-               });
+                endpoints.MapControllerRoute(
+                    "search",
+                    "{controller=Home}/{action=SearchMusic}/{genre=Rock}");
+
+            });
         }
     }
 }

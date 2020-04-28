@@ -27,5 +27,10 @@ namespace MusicStore.Web.Controllers
 
             return Content(message);
         }
+
+        public IActionResult SearchMusic(string genre)
+        {
+            return Content("bla");
+        }
     }
 }
