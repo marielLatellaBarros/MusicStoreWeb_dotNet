@@ -46,7 +46,7 @@ namespace MusicStore.Tests
             var result = (ContentResult)_sut.About();
 
             //assert
-            Assert.That(_sut.Index(), Is.InstanceOf<IActionResult>());
+            Assert.That(_sut.About(), Is.InstanceOf<IActionResult>());
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Content, Is.EqualTo(_controllerName + _actionName));
         }
@@ -59,9 +59,23 @@ namespace MusicStore.Tests
             var result = (ContentResult)_sut.Details(id);
 
             //assert
-            Assert.That(_sut.Index(), Is.InstanceOf<IActionResult>());
+            Assert.That(_sut.Details(id), Is.InstanceOf<IActionResult>());
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Content, Is.EqualTo(_controllerName + _actionName + id));
+        }
+
+        [Test]
+        public void Search_Rock_PermanentRedirect()
+        {
+            //act
+            string genre = "rock";
+            var result = (RedirectResult)_sut.SearchMusic(genre);
+
+            //assert
+            Assert.That(_sut.SearchMusic(genre), Is.InstanceOf<IActionResult>());
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Permanent, Is.True);
+            Assert.That(result.Url, Is.EqualTo(HomeController.RockUrl));
         }
 
     }

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Linq;
 
 namespace MusicStore.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public static string RockUrl = "https://youtu.be/Qyclqo_AV2M";
         public IActionResult Index()
         {
             var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
@@ -30,7 +30,12 @@ namespace MusicStore.Web.Controllers
 
         public IActionResult SearchMusic(string genre)
         {
-            return Content("bla");
+            if (genre.ToUpper().Equals("ROCK")) 
+            {
+                return RedirectPermanent(RockUrl);
+            }
+
+            return NotFound();
         }
     }
 }
