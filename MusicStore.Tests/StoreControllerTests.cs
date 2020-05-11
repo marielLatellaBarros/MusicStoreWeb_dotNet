@@ -13,6 +13,7 @@ namespace MusicStore.Tests
         private StoreController _sut;
         private Mock<IGenreRepository> _genreRepoMock;
 
+        [SetUp]
         public void Setup()
         {
             //arrange
@@ -25,18 +26,15 @@ namespace MusicStore.Tests
         public void Index_ShowsListOfMusicGenres()
         {
             //arrange
-            IList<Genre> genres = new List<Genre>
-            {
-                new Genre(),
-                new Genre()
-            };
-            //TODO: this line fails. NullReferenceException: genreRepoMock somehow is NULL
+            IList<Genre> genres = new List<Genre>();
             _genreRepoMock.Setup(m => m.GetAll()).Returns(genres);
 
+            //act
             var viewResult = (ViewResult) _sut.Index();
 
             //assert
             Assert.That(viewResult, Is.Not.Null);
+            Assert.That(viewResult, Is.InstanceOf<IActionResult>());
 
         }
     }
