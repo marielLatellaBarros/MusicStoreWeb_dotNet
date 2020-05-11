@@ -26,7 +26,7 @@ namespace MusicStore.Tests
         public void Index_ShowsListOfMusicGenres()
         {
             //arrange
-            IList<Genre> genres = new List<Genre>();
+            IReadOnlyList<Genre> genres = new List<Genre>();
             _genreRepoMock.Setup(m => m.GetAll()).Returns(genres);
 
             //act

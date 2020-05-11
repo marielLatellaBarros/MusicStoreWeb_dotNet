@@ -5,6 +5,6 @@ namespace MusicStoreCore.Data.Interfaces
 {
     public interface IGenreRepository
     {
-        IList<Genre> GetAll();
+        IReadOnlyList<Genre> GetAll();
     }
 }
