@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MusicStore.Web\MusicStore.Web.csproj" />
+    <ProjectReference Include="..\MusicStoreCore.Data\MusicStoreCore.Data.csproj" />
   </ItemGroup>
 
 </Project>
