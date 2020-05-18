@@ -16,6 +16,7 @@ namespace MusicStore.Web.Controllers
         public IActionResult Index()
         {
             var genres = _genreRepository.GetAll();
+
             return View(genres);
         }
 

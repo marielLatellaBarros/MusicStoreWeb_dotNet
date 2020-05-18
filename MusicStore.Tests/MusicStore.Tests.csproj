@@ -21,8 +21,4 @@
     <ProjectReference Include="..\MusicStoreCore.Data\MusicStore.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Store\" />
-  </ItemGroup>
-
 </Project>
