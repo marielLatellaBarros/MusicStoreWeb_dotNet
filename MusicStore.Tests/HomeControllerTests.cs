@@ -36,15 +36,14 @@ namespace MusicStore.Tests
         }
 
         [Test]
-        public void Index_ReturnsContentContainingControllerNameAndActionName()
+        public void Index_ReturnsDefaultView()
         {
             //act
-            var result = (ContentResult)_sut.Index();
+            var result = (ViewResult)_sut.Index();
 
             //assert
            Assert.That(_sut.Index(), Is.InstanceOf<IActionResult>());
            Assert.That(result, Is.Not.Null);
-           Assert.That(result.Content, Is.EqualTo(_controllerName+ _actionName));
         }
 
         [Test]

@@ -17,9 +17,9 @@ namespace MusicStore.Web.Controllers
 
         public IActionResult Index()
         {
-            var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
-
-            return Content(message);
+            //var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
+            //return Content(message);
+            return View();
         }
 
         public IActionResult About()

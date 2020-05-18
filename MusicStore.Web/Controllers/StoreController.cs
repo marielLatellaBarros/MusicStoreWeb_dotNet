@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MusicStoreCore.Data.Interfaces;
-using MusicStoreCore.Data.Repositories;
 
 namespace MusicStore.Web.Controllers
 {

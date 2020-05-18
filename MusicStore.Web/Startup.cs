@@ -47,17 +47,26 @@ namespace MusicStore.Web
 
             app.UseAuthorization();
 
+            // app.UseEndpoints(endpoints =>
+            // {
+            //     endpoints.MapDefaultControllerRoute();
+            // });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     "index",
-                    "{controller=Home}/{action=Index}/");
-
+                    "{controller=Home}/{action=Index}");
+            
                 endpoints.MapControllerRoute(
                     "search",
                     "{controller=Home}/{action=SearchMusic}/{genre=Rock}");
-
+            
             });
+
+
+
+
         }
     }
 }
