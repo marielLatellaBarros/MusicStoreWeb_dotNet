@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using MusicStore.Data.Interfaces;
 using MusicStore.Data.Repositories;
 using MusicStore.Web.Services;
-using MusicStoreCore.Data.Repositories;
 
 namespace MusicStore.Web
 {
