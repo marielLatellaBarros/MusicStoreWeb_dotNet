@@ -56,5 +56,20 @@ namespace MusicStore.Tests
             Assert.That(viewResult, Is.InstanceOf<IActionResult>());
             Assert.That(viewResult.Model, Is.SameAs(_albumRepoMock.Object.GetByGenre(genreId)));
         }
+
+        [Test]
+        public void Browse_ReturnsNotFoundResult_WhenInvalidIdIsGiven()
+        {
+            //arrange
+            int genreId = 100;
+            _albumRepoMock.Setup(m => m.GetByGenre(It.IsAny<int>())).Returns(() => null);
+
+            //act
+            var viewResult = (NotFoundResult)_sut.Browse(genreId);
+
+            //assert
+            Assert.That(viewResult, Is.Not.Null);
+            Assert.That(viewResult, Is.InstanceOf<NotFoundResult>());
+        }
     }
 }

@@ -21,11 +21,13 @@ namespace MusicStore.Web.Controllers
 
         public IActionResult Browse(int id)
         {
-
             var albumsForGenre = _albumRepository.GetByGenre(id);
+            if (albumsForGenre != null)
+            {
+                return View(albumsForGenre);
+            }
 
-            return View(albumsForGenre);
-
+            return NotFound();
         }
     }
 }
