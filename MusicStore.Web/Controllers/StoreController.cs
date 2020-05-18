@@ -25,6 +25,7 @@ namespace MusicStore.Web.Controllers
             var albumsForGenre = _albumRepository.GetByGenre(id);
             if (albumsForGenre != null)
             {
+                ViewBag.Genre = _genreRepository.GetById(id).Name;
                 return View(albumsForGenre);
             }
 

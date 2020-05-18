@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MusicStore.Data.Interfaces;
 using MusicStoreCore.Data.DomainClasses;
 
-namespace MusicStoreCore.Data.Repositories
+namespace MusicStore.Data.Repositories
 {
     public class GenreDummyRepository : IGenreRepository
     {
@@ -27,6 +28,11 @@ namespace MusicStoreCore.Data.Repositories
         public IReadOnlyList<Genre> GetAll()
         {
             return _genres;
+        }
+
+        public Genre GetById(int id)
+        {
+            return _genres.FirstOrDefault(g => g.Id == id);
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Linq;
 using MusicStore.Data.Interfaces;
 using MusicStoreCore.Data.DomainClasses;
-using MusicStoreCore.Data.Repositories;
 
 namespace MusicStore.Data.Repositories
 {
