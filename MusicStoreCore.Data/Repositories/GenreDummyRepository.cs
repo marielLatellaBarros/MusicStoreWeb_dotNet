@@ -4,7 +4,7 @@ using MusicStoreCore.Data.Interfaces;
 
 namespace MusicStoreCore.Data.Repositories
 {
-    public class GenreDummyRepository :IGenreRepository
+    public class GenreDummyRepository : IGenreRepository
     {
         private static List<Genre> _genres = new List<Genre> {
             new Genre

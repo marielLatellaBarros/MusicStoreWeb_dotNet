@@ -24,6 +24,7 @@ namespace MusicStore.Web
             services.AddControllersWithViews();
             services.AddSingleton<IFileProvider, HostFileProvider>();
             services.AddScoped<IGenreRepository, GenreDummyRepository>();
+            services.AddScoped<IAlbumRepository, AlbumDummyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
