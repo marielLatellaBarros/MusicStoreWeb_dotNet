@@ -17,24 +17,18 @@ namespace MusicStore.Web.Controllers
 
         public IActionResult Index()
         {
-            //var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
-            //return Content(message);
             return View();
         }
 
         public IActionResult About()
         {
-            var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
-
-            return Content(message);
+            return CreateRouteInfoContent();
         }
+
 
         public IActionResult Details(int id)
         {
-            var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
-            message += id;
-
-            return Content(message);
+            return CreateRouteInfoContent();
         }
 
         public IActionResult SearchMusic(string genre)
@@ -43,19 +37,16 @@ namespace MusicStore.Web.Controllers
             {
                 return RedirectPermanent(RockUrl);
             }
-
             if (genre.ToUpper().Equals("JAZZ"))
             {
                 return RedirectToAction("Index");
             }
-
             if (genre.ToUpper().Equals("METAL"))
             {
                 var randomId = new Random();
 
                 return RedirectToAction("Details", new { id = randomId });
             }
-
             if (genre.ToUpper().Equals("CLASSIC"))
             {
                 var pathToCssFile = @"wwwroot/css/site.css";
@@ -70,6 +61,27 @@ namespace MusicStore.Web.Controllers
 
             var message = ControllerContext.RouteData.Values.Values.Aggregate("", (current, value) => current + value);
             message += genre;
+
+            return Content(message);
+        }
+
+        private ContentResult CreateRouteInfoContent()
+        {
+            var controllerName = ControllerContext.RouteData.Values["controller"];
+            var actionName = ControllerContext.RouteData.Values["action"];
+            var message = $"{controllerName}:{actionName}";
+
+            var id = RouteData.Values["id"];
+            if (id != null)
+            {
+                message += $":{id}";
+            }
+
+            var genreParam = RouteData.Values["genre"];
+            if (genreParam != null)
+            {
+                message += $":{genreParam}";
+            }
 
             return Content(message);
         }
