@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using MusicStore.Data.Interfaces;
 using MusicStoreCore.Data.DomainClasses;
-using MusicStoreCore.Data.Interfaces;
 
 namespace MusicStoreCore.Data.Repositories
 {

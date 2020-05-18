@@ -1,9 +1,10 @@
-﻿using MusicStoreCore.Data.DomainClasses;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using MusicStoreCore.Data.Interfaces;
+using MusicStore.Data.Interfaces;
+using MusicStoreCore.Data.DomainClasses;
+using MusicStoreCore.Data.Repositories;
 
-namespace MusicStoreCore.Data.Repositories
+namespace MusicStore.Data.Repositories
 {
     public class AlbumDummyRepository : IAlbumRepository
     {

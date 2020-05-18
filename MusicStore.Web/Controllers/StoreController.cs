@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MusicStoreCore.Data.Interfaces;
+using MusicStore.Data.Interfaces;
 
 namespace MusicStore.Web.Controllers
 {
@@ -15,7 +15,8 @@ namespace MusicStore.Web.Controllers
 
         public IActionResult Index()
         {
-            return View(_genreRepository.GetAll());
+            var genres = _genreRepository.GetAll();
+            return View(genres);
         }
 
         public IActionResult Browse(int id)

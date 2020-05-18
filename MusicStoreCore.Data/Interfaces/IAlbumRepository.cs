@@ -1,7 +1,7 @@
-﻿using MusicStoreCore.Data.DomainClasses;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MusicStoreCore.Data.DomainClasses;
 
-namespace MusicStoreCore.Data.Interfaces
+namespace MusicStore.Data.Interfaces
 {
     public interface IAlbumRepository
     {

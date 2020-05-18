@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicStore.Web", "MusicStor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicStore.Tests", "MusicStore.Tests\MusicStore.Tests.csproj", "{5D0AE16E-D680-4BF4-A22E-147258D30FCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStoreCore.Data", "MusicStoreCore.Data\MusicStoreCore.Data.csproj", "{072D2134-BDC8-49B5-BE82-F158313CFDED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicStore.Data", "MusicStoreCore.Data\MusicStore.Data.csproj", "{072D2134-BDC8-49B5-BE82-F158313CFDED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

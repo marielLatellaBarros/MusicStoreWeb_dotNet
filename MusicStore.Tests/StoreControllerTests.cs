@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
+using MusicStore.Data.Interfaces;
 using MusicStore.Web.Controllers;
-using MusicStoreCore.Data.Interfaces;
 using NUnit.Framework;
 
 namespace MusicStore.Tests

@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MusicStore.Data.Interfaces;
+using MusicStore.Data.Repositories;
 using MusicStore.Web.Services;
-using MusicStoreCore.Data.Interfaces;
 using MusicStoreCore.Data.Repositories;
 
 namespace MusicStore.Web

@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MusicStoreCore.Data\MusicStoreCore.Data.csproj" />
+    <ProjectReference Include="..\MusicStoreCore.Data\MusicStore.Data.csproj" />
   </ItemGroup>
 
 
