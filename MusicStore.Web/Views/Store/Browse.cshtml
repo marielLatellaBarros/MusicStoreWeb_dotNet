@@ -1,17 +1,12 @@
 ﻿@model IEnumerable<MusicStoreCore.Data.DomainClasses.Album>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Browse";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Browse</title>
-</head>
-<body>
+<h1>Browse @ViewBag.Genre (@Model.Count())</h1>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
