@@ -29,5 +29,16 @@ namespace MusicStore.Web.Controllers
 
             return NotFound();
         }
+
+        public IActionResult Details(int id)
+        {
+            var albumDetails = _albumRepository.GetById(id);
+            if (albumDetails != null)
+            {
+                return View(albumDetails);
+            }
+
+            return NotFound();
+        }
     }
 }
